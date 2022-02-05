@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "declaration": true,
+        "declarationDir": "./types",
+        "outDir": "./js",
+        "rootDir": "./src",
+        "paths": {
+            "canvasom": [
+                "./node_modules/canvasom/index.d.ts"
+            ],
+            "3h-event": [
+                "./node_modules/3h-event/index.d.ts"
+            ]
+        },
+        "strict": true,
+        "noUnusedLocals": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "src"
+    ]
+}
