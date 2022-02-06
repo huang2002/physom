@@ -14,7 +14,7 @@ const CONSTRAINT_COMPOSITE_NODE_VERTICES = COM.Vertices.createRegularPolygon(
 );
 
 const resetConstraintCompositeScene = () => {
-    const nodes = /** @type {BOM.BodyNode<any>[]} */(
+    const nodes = /** @type {POM.BodyNode<any>[]} */(
         constraintCompositeScene.selectClass('composite-node')
     );
     nodes.forEach((node, index) => {
@@ -34,7 +34,7 @@ const enterConstraintCompositeScene = () => {
 };
 
 const CompositeNode = () => (
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'composite-node',
         classNames: ['composite-node'],
         vertices: CONSTRAINT_COMPOSITE_NODE_VERTICES,
@@ -50,13 +50,13 @@ const CompositeNode = () => (
 );
 
 /**
- * @param {BOM.BodyNode<any>} bodyA
- * @param {BOM.BodyNode<any>} bodyB
+ * @param {POM.BodyNode<any>} bodyA
+ * @param {POM.BodyNode<any>} bodyB
  * @param {number} lengthScale
  * @returns {COM.CanvasNode<any>}
  */
 const CompositeNodeConstraint = (bodyA, bodyB, lengthScale) => (
-    new BOM.ConstraintNode({
+    new POM.ConstraintNode({
         bodyA,
         bodyB,
         length: CONSTRAINT_COMPOSITE_NODE_SIZE * lengthScale,
@@ -68,7 +68,7 @@ const CompositeNodeConstraint = (bodyA, bodyB, lengthScale) => (
     })
 );
 
-const constraintCompositeScene = COM.create(BOM.WorldNode, {
+const constraintCompositeScene = COM.create(POM.WorldNode, {
     id: 'constraint-composite-scene',
     stretch: 1,
     interactive: true,
@@ -77,7 +77,7 @@ const constraintCompositeScene = COM.create(BOM.WorldNode, {
 });
 
 /**
- * @type {BOM.BodyNode<any>[][]}
+ * @type {POM.BodyNode<any>[][]}
  */
 const compositeNodes = [];
 for (let rowIndex = 0; rowIndex < CONSTRAINT_COMPOSITE_ROWS; rowIndex++) {
@@ -134,7 +134,7 @@ for (let rowIndex = 0; rowIndex < CONSTRAINT_COMPOSITE_ROWS; rowIndex++) {
 
 constraintCompositeScene.appendChild(
     /** @type {COM.CanvasNode<any>} */(
-        COM.create(BOM.BodyNode, {
+        COM.create(POM.BodyNode, {
             category: 'ground',
             classNames: ['ground'],
             active: false,

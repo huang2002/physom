@@ -4,7 +4,7 @@
 const CRADLE_SCENE_X0 = 200;
 
 const resetCradleScene = () => {
-    const cradles = /** @type {BOM.BodyNode<any>[]} */(
+    const cradles = /** @type {POM.BodyNode<any>[]} */(
         cradleScene.selectClass('cradle')
     );
     cradles.forEach((cradle, i) => {
@@ -28,7 +28,7 @@ const enterCradleScene = () => {
     enter(cradleScene);
 };
 
-const cradleScene = COM.create(BOM.WorldNode, {
+const cradleScene = COM.create(POM.WorldNode, {
     id: 'cradle-scene',
     stretch: 1,
     interactive: true,

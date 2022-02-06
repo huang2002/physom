@@ -2,7 +2,7 @@
 /// <reference path="./common.js" />
 
 const resetFrictionSlopeScene = () => {
-    const items = /** @type {BOM.BodyNode<any>[]} */(
+    const items = /** @type {POM.BodyNode<any>[]} */(
         frictionSlopeScene.selectClass('item')
     );
     items.forEach(item => {
@@ -17,7 +17,7 @@ const enterFrictionSlopeScene = () => {
     enter(frictionSlopeScene);
 };
 
-const frictionSlopeScene = COM.create(BOM.WorldNode, {
+const frictionSlopeScene = COM.create(POM.WorldNode, {
     id: 'friction-slope-scene',
     stretch: 1,
     interactive: true,
@@ -25,7 +25,7 @@ const frictionSlopeScene = COM.create(BOM.WorldNode, {
     root,
 }, [
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'item',
         classNames: ['item'],
         vertices: COM.Vertices.createRectangle(60, 60),
@@ -40,7 +40,7 @@ const frictionSlopeScene = COM.create(BOM.WorldNode, {
         SimpleText('item0'),
     ]),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'item',
         classNames: ['item'],
         vertices: COM.Vertices.fromArray([
@@ -62,7 +62,7 @@ const frictionSlopeScene = COM.create(BOM.WorldNode, {
         }),
     ]),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'slope',
         classNames: ['slope'],
         active: false,
@@ -84,7 +84,7 @@ const frictionSlopeScene = COM.create(BOM.WorldNode, {
         }),
     ]),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'ground',
         classNames: ['ground'],
         active: false,
@@ -101,7 +101,7 @@ const frictionSlopeScene = COM.create(BOM.WorldNode, {
         SimpleText('ground'),
     ]),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'wall',
         classNames: ['wall'],
         active: false,

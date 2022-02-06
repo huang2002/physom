@@ -19,8 +19,8 @@ export default [
         external,
         output: {
             format: 'umd',
-            name: 'BOM',
-            file: './dist/boxom.umd.js',
+            name: 'POM',
+            file: './dist/physom.umd.js',
             globals: {
                 canvasom: 'COM'
             },
@@ -31,7 +31,7 @@ export default [
         external,
         output: {
             format: 'esm',
-            file: './dist/boxom.js',
+            file: './dist/physom.js',
         },
     },
 ];

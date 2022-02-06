@@ -2,7 +2,7 @@
 /// <reference path="./common.js" />
 
 const resetConstraintBasicsScene = () => {
-    const cradles = /** @type {BOM.BodyNode<any>[]} */(
+    const cradles = /** @type {POM.BodyNode<any>[]} */(
         constraintBasicsScene.selectClass('cradle')
     );
     cradles.forEach(cradle => {
@@ -26,7 +26,7 @@ const enterConstraintBasicsScene = () => {
     enter(constraintBasicsScene);
 };
 
-const ball0 = COM.create(BOM.BodyNode, {
+const ball0 = COM.create(POM.BodyNode, {
     category: 'ball',
     classNames: ['ball'],
     vertices: CRADLE_BALL_VERTICES,
@@ -42,7 +42,7 @@ const ball0 = COM.create(BOM.BodyNode, {
     SimpleText('ball0'),
 ]);
 
-const ball1 = COM.create(BOM.BodyNode, {
+const ball1 = COM.create(POM.BodyNode, {
     category: 'ball',
     classNames: ['ball'],
     vertices: CRADLE_BALL_VERTICES,
@@ -60,7 +60,7 @@ const ball1 = COM.create(BOM.BodyNode, {
     SimpleText('ball1'),
 ]);
 
-const ball2 = COM.create(BOM.BodyNode, {
+const ball2 = COM.create(POM.BodyNode, {
     category: 'ball',
     classNames: ['ball'],
     vertices: CRADLE_BALL_VERTICES,
@@ -78,7 +78,7 @@ const ball2 = COM.create(BOM.BodyNode, {
     SimpleText('ball2'),
 ]);
 
-const ball3 = COM.create(BOM.BodyNode, {
+const ball3 = COM.create(POM.BodyNode, {
     category: 'ball',
     classNames: ['ball'],
     vertices: CRADLE_BALL_VERTICES,
@@ -94,7 +94,7 @@ const ball3 = COM.create(BOM.BodyNode, {
     SimpleText('ball3'),
 ]);
 
-const constraintBasicsScene = COM.create(BOM.WorldNode, {
+const constraintBasicsScene = COM.create(POM.WorldNode, {
     id: 'constraint-basics-scene',
     stretch: 1,
     interactive: true,
@@ -141,7 +141,7 @@ const constraintBasicsScene = COM.create(BOM.WorldNode, {
 
     ball0,
     ball1,
-    COM.create(BOM.ConstraintNode, {
+    COM.create(POM.ConstraintNode, {
         bodyA: ball0,
         bodyB: ball1,
         minLength: 80,
@@ -154,7 +154,7 @@ const constraintBasicsScene = COM.create(BOM.WorldNode, {
 
     ball2,
     ball3,
-    COM.create(BOM.ConstraintNode, {
+    COM.create(POM.ConstraintNode, {
         bodyA: ball2,
         bodyB: ball3,
         length: 100,
@@ -163,7 +163,7 @@ const constraintBasicsScene = COM.create(BOM.WorldNode, {
         },
     }),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'ground',
         classNames: ['ground'],
         active: false,
@@ -180,7 +180,7 @@ const constraintBasicsScene = COM.create(BOM.WorldNode, {
         SimpleText('ground'),
     ]),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'wall',
         classNames: ['wall'],
         active: false,

@@ -71,11 +71,11 @@ window.addEventListener('resize', resizeRenderer);
 window.addEventListener('orientationchange', resizeRenderer);
 
 /**
- * @param {BOM.WorldNode<any>} nextScene
+ * @param {POM.WorldNode<any>} nextScene
  */
 const enter = (nextScene) => {
     if (sceneContainer.childNodes.length) {
-        const previousScene = /** @type {BOM.WorldNode<any>} */(
+        const previousScene = /** @type {POM.WorldNode<any>} */(
             sceneContainer.childNodes[0]
         );
         if (previousScene === nextScene) {
@@ -140,20 +140,20 @@ const ResetButton = (callback) => (
  * @typedef CreateCradleOptions
  * @property {string} tag
  * @property {number} anchorX
- * @property {BOM.ConstraintNodeOptions<any>} [constraintOptions]
- * @property {BOM.BodyNodeOptions<any>} [ballOptions]
+ * @property {POM.ConstraintNodeOptions<any>} [constraintOptions]
+ * @property {POM.BodyNodeOptions<any>} [ballOptions]
  */
 
 /**
  * @param {CreateCradleOptions} options
- * @returns {(BOM.BodyNode | BOM.ConstraintNode)[]}
+ * @returns {(POM.BodyNode | POM.ConstraintNode)[]}
  */
 const createCradle = (options) => {
 
-    const anchor = BOM.Utils.createAnchor(options.anchorX, CRADLE_ANCHOR_Y);
+    const anchor = POM.Utils.createAnchor(options.anchorX, CRADLE_ANCHOR_Y);
     anchor.classNames.push('anchor');
 
-    const ball = COM.create(BOM.BodyNode, {
+    const ball = COM.create(POM.BodyNode, {
         category: 'cradle',
         classNames: ['cradle'],
         vertices: CRADLE_BALL_VERTICES,
@@ -166,7 +166,7 @@ const createCradle = (options) => {
         SimpleText(options.tag),
     ]);
 
-    const constraint = COM.create(BOM.ConstraintNode, {
+    const constraint = COM.create(POM.ConstraintNode, {
         bodyA: anchor,
         bodyB: ball,
         length: CRADLE_INIT_LENGTH,

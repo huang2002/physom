@@ -4,7 +4,7 @@
 const BOUNCE_BOX_VERTICES = COM.Vertices.createRectangle(60, 60);
 
 const resetBounceScene = () => {
-    const boxes = /** @type {BOM.BodyNode<any>[]} */(
+    const boxes = /** @type {POM.BodyNode<any>[]} */(
         bounceScene.selectClass('box')
     );
     boxes.forEach(box => {
@@ -27,7 +27,7 @@ const enterBounceScene = () => {
  * @param {number} [elasticity]
  */
 const BounceBox = (tag, elasticity) => (
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'box',
         classNames: ['box'],
         vertices: BOUNCE_BOX_VERTICES,
@@ -43,7 +43,7 @@ const BounceBox = (tag, elasticity) => (
     ])
 );
 
-const bounceScene = COM.create(BOM.WorldNode, {
+const bounceScene = COM.create(POM.WorldNode, {
     id: 'bounce-scene',
     stretch: 1,
     interactive: true,
@@ -57,7 +57,7 @@ const bounceScene = COM.create(BOM.WorldNode, {
     BounceBox('box3', 0.5),
     BounceBox('box4', 0.98),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'ground',
         classNames: ['ground'],
         active: false,

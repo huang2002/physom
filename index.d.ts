@@ -1,3 +1,3 @@
-export as namespace BOM;
+export as namespace POM;
 
 export * from "./types/index";

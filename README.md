@@ -1,4 +1,4 @@
-# boxom
+# physom
 
 > A simple physics engine for `canvasom`.
 

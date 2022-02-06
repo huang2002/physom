@@ -2,7 +2,7 @@
 /// <reference path="./common.js" />
 
 const resetFrictionCompareScene = () => {
-    const items = /** @type {BOM.BodyNode<any>[]} */(
+    const items = /** @type {POM.BodyNode<any>[]} */(
         frictionCompareScene.selectClass('item')
     );
     items.forEach(item => {
@@ -29,7 +29,7 @@ const enterFrictionCompareScene = () => {
  * @param {FrictionItemOptions} [options]
  */
 const FrictionItem = (options) => {
-    const item = COM.create(BOM.BodyNode, {
+    const item = COM.create(POM.BodyNode, {
         category: 'item',
         classNames: ['item'],
         vertices: COM.Vertices.createRectangle(80, 50),
@@ -61,7 +61,7 @@ const FrictionItem = (options) => {
  * @param {FrictionGroundOptions} options
  */
 const FrictionGround = (options) => {
-    const ground = COM.create(BOM.BodyNode, {
+    const ground = COM.create(POM.BodyNode, {
         category: 'ground',
         classNames: ['ground'],
         active: false,
@@ -83,7 +83,7 @@ const FrictionGround = (options) => {
     return ground;
 };
 
-const frictionCompareScene = COM.create(BOM.WorldNode, {
+const frictionCompareScene = COM.create(POM.WorldNode, {
     id: 'friction-compare-scene',
     stretch: 1,
     interactive: true,
@@ -125,7 +125,7 @@ const frictionCompareScene = COM.create(BOM.WorldNode, {
         y: 510,
     }),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'wall',
         classNames: ['wall'],
         active: false,
@@ -142,7 +142,7 @@ const frictionCompareScene = COM.create(BOM.WorldNode, {
         SimpleText('>>'),
     ]),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'wall',
         classNames: ['wall'],
         active: false,

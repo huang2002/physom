@@ -14,7 +14,7 @@ const CONSTRAINT_CLOTH_NODE_VERTICES = COM.Vertices.createRegularPolygon(
 );
 
 const resetConstraintClothScene = () => {
-    const nodes = /** @type {BOM.BodyNode<any>[]} */(
+    const nodes = /** @type {POM.BodyNode<any>[]} */(
         constraintClothScene.selectClass('cloth-node')
     );
     nodes.forEach((node, index) => {
@@ -37,7 +37,7 @@ const enterConstraintClothScene = () => {
  * @param {boolean} active
  */
 const ClothNode = (active) => (
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         classNames: ['cloth-node'],
         active,
         vertices: CONSTRAINT_CLOTH_NODE_VERTICES,
@@ -51,12 +51,12 @@ const ClothNode = (active) => (
 );
 
 /**
- * @param {BOM.BodyNode<any>} bodyA
- * @param {BOM.BodyNode<any>} bodyB
+ * @param {POM.BodyNode<any>} bodyA
+ * @param {POM.BodyNode<any>} bodyB
  * @returns {COM.CanvasNode<any>}
  */
 const ClothNodeConstraint = (bodyA, bodyB) => (
-    new BOM.ConstraintNode({
+    new POM.ConstraintNode({
         bodyA,
         bodyB,
         minLength: 0,
@@ -69,7 +69,7 @@ const ClothNodeConstraint = (bodyA, bodyB) => (
     })
 );
 
-const constraintClothScene = COM.create(BOM.WorldNode, {
+const constraintClothScene = COM.create(POM.WorldNode, {
     id: 'constraint-cloth-scene',
     stretch: 1,
     interactive: true,
@@ -78,7 +78,7 @@ const constraintClothScene = COM.create(BOM.WorldNode, {
 });
 
 /**
- * @type {BOM.BodyNode<any>[][]}
+ * @type {POM.BodyNode<any>[][]}
  */
 const clothNodes = [];
 for (let rowIndex = 0; rowIndex < CONSTRAINT_CLOTH_ROWS; rowIndex++) {

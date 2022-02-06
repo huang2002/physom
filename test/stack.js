@@ -4,7 +4,7 @@
 const STACK_BOX_VERTICES = COM.Vertices.createRectangle(60, 60);
 
 const resetStackScene = () => {
-    const boxes = /** @type {BOM.BodyNode<any>[]} */(
+    const boxes = /** @type {POM.BodyNode<any>[]} */(
         stackScene.selectClass('box')
     );
     boxes.forEach((box, i) => {
@@ -30,7 +30,7 @@ const enterStackScene = () => {
  * @param {number} index
  */
 const StackBox = (index) => (
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'box',
         classNames: ['box'],
         vertices: STACK_BOX_VERTICES,
@@ -47,7 +47,7 @@ const StackBox = (index) => (
     ])
 );
 
-const stackScene = COM.create(BOM.WorldNode, {
+const stackScene = COM.create(POM.WorldNode, {
     id: 'stack-scene',
     stretch: 1,
     interactive: true,
@@ -62,7 +62,7 @@ const stackScene = COM.create(BOM.WorldNode, {
         ),
     ),
 
-    COM.create(BOM.BodyNode, {
+    COM.create(POM.BodyNode, {
         category: 'ground',
         classNames: ['ground'],
         active: false,
