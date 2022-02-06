@@ -37,13 +37,11 @@ export interface BodyNodeDragEventData {
      */
     id: number | null;
     /**
-     * Pointer x.
-     * (Relative to the world node that handles the drag.)
+     * Pointer x. (absolute)
      */
     x: number;
     /**
-     * Pointer y.
-     * (Relative to the world node that handles the drag.)
+     * Pointer y. (absolute)
      */
     y: number;
     /**

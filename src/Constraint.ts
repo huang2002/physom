@@ -368,7 +368,7 @@ export class ConstraintNode<Events extends CanvasNodeEvents = CanvasNodeEvents>
         }
 
         const { context } = renderer;
-        const { x: x2, y: y2, offset: offsetB } = bodyB;
+        const { position: { x: x2, y: y2 }, offset: offsetB } = bodyB;
         const { offset: offsetA } = bodyA;
         const x1 = x2 - offsetB.x + offsetA.x;
         const y1 = y2 - offsetB.y + offsetA.y;

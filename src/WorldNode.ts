@@ -74,6 +74,10 @@ export type WorldNodeOptions<Events extends WorldNodeEvents> = (
 /**
  * Class of physical world nodes
  * that contain and update body nodes.
+ * (Note that inside a world node,
+ * the positions of body nodes
+ * are represented by their `offset`,
+ * relative to the world node.)
  */
 export class WorldNode<Events extends WorldNodeEvents = WorldNodeEvents>
     extends CanvasNode<Events> {
@@ -242,28 +246,28 @@ export class WorldNode<Events extends WorldNodeEvents = WorldNodeEvents>
             return;
         }
 
-        const { data } = event;
-        const { target } = data;
+        const { data: eventData } = event;
+        const { target } = eventData;
         if ((target.tag !== 'body') || !(target as BodyNode).draggable) {
             return;
         }
 
-        const { pointerConstraint } = this;
+        const { pointerConstraint, position: worldPosition } = this;
         const { bodyB } = pointerConstraint;
-        const x = data.x - this.x;
-        const y = data.y - this.y;
+        const offsetX = eventData.x - worldPosition.x;
+        const offsetY = eventData.y - worldPosition.y;
 
-        pointerConstraint.bodyA!.offset.set(x, y);
+        pointerConstraint.bodyA!.offset.set(offsetX, offsetY);
 
         const dragStartEvent: BodyNodeDragStartEvent = new Event({
             name: 'dragstart',
             stoppable: true,
             cancelable: true,
             data: {
-                id: data.id,
-                x,
-                y,
-                rawEvent: data.rawEvent,
+                id: eventData.id,
+                x: eventData.x,
+                y: eventData.y,
+                rawEvent: eventData.rawEvent,
             },
         });
 
@@ -277,19 +281,20 @@ export class WorldNode<Events extends WorldNodeEvents = WorldNodeEvents>
                 name: 'dragend',
                 stoppable: true,
                 data: {
-                    id: data.id,
-                    x,
-                    y,
-                    rawEvent: data.rawEvent,
+                    id: eventData.id,
+                    x: eventData.x,
+                    y: eventData.y,
+                    rawEvent: eventData.rawEvent,
                 },
             });
             bodyB.emit(dragEndEvent);
         }
 
+        const { position: targetPosition } = target;
         pointerConstraint.bodyB = target as BodyNode;
         pointerConstraint.anchorB.set(
-            data.x - target.x,
-            data.y - target.y,
+            eventData.x - targetPosition.x,
+            eventData.y - targetPosition.y,
         );
 
     }
@@ -300,11 +305,11 @@ export class WorldNode<Events extends WorldNodeEvents = WorldNodeEvents>
             return;
         }
 
-        const { pointerConstraint } = this;
+        const { pointerConstraint, position: worldPosition } = this;
         const { bodyA, bodyB } = pointerConstraint;
-        const { data } = event;
-        const x = data.x - this.x;
-        const y = data.y - this.y;
+        const { data: eventData } = event;
+        const offsetX = eventData.x - worldPosition.x;
+        const offsetY = eventData.y - worldPosition.y;
 
         if (!bodyB) {
             return;
@@ -315,40 +320,40 @@ export class WorldNode<Events extends WorldNodeEvents = WorldNodeEvents>
             stoppable: true,
             cancelable: true,
             data: {
-                id: data.id,
-                x,
-                y,
-                rawEvent: data.rawEvent,
+                id: eventData.id,
+                x: eventData.x,
+                y: eventData.y,
+                rawEvent: eventData.rawEvent,
             },
         });
 
         bodyB.emit(dragMoveEvent);
 
         if (!dragMoveEvent.canceled) {
-            bodyA!.offset.set(x, y);
+            bodyA!.offset.set(offsetX, offsetY);
         }
 
     }
 
     private _onPointerEnd(event: CanvasPointerEndEvent) {
 
-        const { pointerConstraint } = this;
+        const { pointerConstraint, position: worldPosition } = this;
         const { bodyB } = pointerConstraint;
-        const { data } = event;
-        const x = data.x - this.x;
-        const y = data.y - this.y;
+        const { data: eventData } = event;
+        const offsetX = eventData.x - worldPosition.x;
+        const offsetY = eventData.y - worldPosition.y;
 
-        pointerConstraint.bodyA!.offset.set(x, y);
+        pointerConstraint.bodyA!.offset.set(offsetX, offsetY);
 
         if (bodyB) {
             const dragEndEvent: BodyNodeDragEndEvent = new Event({
                 name: 'dragend',
                 stoppable: true,
                 data: {
-                    id: data.id,
-                    x,
-                    y,
-                    rawEvent: data.rawEvent,
+                    id: eventData.id,
+                    x: eventData.x,
+                    y: eventData.y,
+                    rawEvent: eventData.rawEvent,
                 },
             });
             bodyB.emit(dragEndEvent);
