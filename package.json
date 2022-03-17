@@ -36,7 +36,7 @@
     "terser": "^5.2.0",
     "typescript": "^4.0.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "canvasom": "^0.37.0"
   }
 }
