@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0
+
+- Add `airFriction`
+- Update deps
+
 ## 0.1.2
 
 - Update deps
