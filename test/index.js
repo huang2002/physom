@@ -4,6 +4,7 @@
 /// <reference path="./stack.js" />
 /// <reference path="./frictionSlop.js" />
 /// <reference path="./frictionCompare.js" />
+/// <reference path="./airFriction.js" />
 /// <reference path="./constraintBasics.js" />
 /// <reference path="./constraintCloth.js" />
 /// <reference path="./constraintComposite.js" />
@@ -58,6 +59,7 @@ const menus = COM.create(COM.AlignNode, {
         MenuButton('stack', enterStackScene),
         MenuButton('friction-slope', enterFrictionSlopeScene),
         MenuButton('friction-compare', enterFrictionCompareScene),
+        MenuButton('airFriction', enterAirFrictionScene),
         MenuButton('constraint-basics', enterConstraintBasicsScene),
         MenuButton('constraint-cloth', enterConstraintClothScene),
         MenuButton('constraint-composite', enterConstraintCompositeScene),

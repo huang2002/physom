@@ -145,6 +145,12 @@ export type BodyNodeOptions<Events extends BodyNodeEvents> = (
          */
         staticFriction: number;
         /**
+         * The coefficient of air friction
+         * that constantly slows down the object.
+         * @default 0
+         */
+        airFriction: number;
+        /**
          * The density of the object.
          * (This affects the mass of the object.)
          * @default 1
@@ -202,6 +208,7 @@ export class BodyNode<Events extends BodyNodeEvents = BodyNodeEvents>
         this.elasticity = options?.elasticity ?? 0.3;
         this.friction = options?.friction ?? 0.3;
         this.staticFriction = options?.staticFriction ?? 0.4;
+        this.airFriction = options?.airFriction ?? 0;
         this._density = options?.density ?? 1;
         this.slop = options?.slop ?? 0.1;
         this.clockwise = options?.clockwise ?? true;
@@ -320,6 +327,13 @@ export class BodyNode<Events extends BodyNodeEvents = BodyNodeEvents>
      * @default 0.4
      */
     staticFriction: number;
+    /** dts2md break */
+    /**
+     * The coefficient of air friction
+     * that constantly slows down the object.
+     * @default 0
+     */
+    airFriction: number;
     /** dts2md break */
     /**
      * The acceptable amount of overlap.
@@ -487,7 +501,7 @@ export class BodyNode<Events extends BodyNodeEvents = BodyNodeEvents>
             return;
         }
 
-        const { velocity, accelaration, gravity, impulse } = this;
+        const { velocity, accelaration, gravity, impulse, airFriction } = this;
 
         this.offset.addVector(velocity)
             .addVector(impulse);
@@ -495,6 +509,9 @@ export class BodyNode<Events extends BodyNodeEvents = BodyNodeEvents>
         velocity.addVector(accelaration);
         if (gravity) {
             velocity.addVector(gravity);
+        }
+        if (airFriction) {
+            velocity.scale(1 - airFriction);
         }
 
     }
