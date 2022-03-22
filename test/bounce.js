@@ -65,8 +65,6 @@ const bounceScene = COM.create(POM.WorldNode, {
         offsetY: 500,
         vertices: COM.Vertices.createRectangle(450, 60),
         elasticity: 0,
-        interactive: true,
-        draggable: true,
         style: {
             strokeStyle: '#F00',
         },
