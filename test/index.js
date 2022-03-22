@@ -54,30 +54,14 @@ const menus = COM.create(COM.AlignNode, {
                 textBaseline: 'middle',
             },
         }),
-        MenuButton('bounce', () => {
-            enterBounceScene();
-        }),
-        MenuButton('stack', () => {
-            enterStackScene();
-        }),
-        MenuButton('friction-slope', () => {
-            enterFrictionSlopeScene();
-        }),
-        MenuButton('friction-compare', () => {
-            enterFrictionCompareScene();
-        }),
-        MenuButton('constraint-basics', () => {
-            enterConstraintBasicsScene();
-        }),
-        MenuButton('constraint-cloth', () => {
-            enterConstraintClothScene();
-        }),
-        MenuButton('constraint-composite', () => {
-            enterConstraintCompositeScene();
-        }),
-        MenuButton('cradle', () => {
-            enterCradleScene();
-        }),
+        MenuButton('bounce', enterBounceScene),
+        MenuButton('stack', enterStackScene),
+        MenuButton('friction-slope', enterFrictionSlopeScene),
+        MenuButton('friction-compare', enterFrictionCompareScene),
+        MenuButton('constraint-basics', enterConstraintBasicsScene),
+        MenuButton('constraint-cloth', enterConstraintClothScene),
+        MenuButton('constraint-composite', enterConstraintCompositeScene),
+        MenuButton('cradle', enterCradleScene),
     ]),
 ]);
 
