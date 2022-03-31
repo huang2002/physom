@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Fix frame time recording
+
 ## 0.2.0
 
 - Add `airFriction`
