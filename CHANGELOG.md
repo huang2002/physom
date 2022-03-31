@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- Fix frame time recording
+
 ## 0.2.1
 
 - Fix frame time recording
