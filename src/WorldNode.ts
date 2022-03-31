@@ -423,9 +423,9 @@ export class WorldNode<Events extends WorldNodeEvents = WorldNodeEvents>
                 this.maxFrameCount,
                 Math.floor(deltaTime / frameDuration),
             );
-            this._lastUpdateTime = timeStamp;
             this._savedTime = deltaTime - frameCount * frameDuration;
         }
+        this._lastUpdateTime = timeStamp;
 
         // before update
         const beforeUpdateEvent: WorldBeforeUpdateEvent = new Event({
