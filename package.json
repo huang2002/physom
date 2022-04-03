@@ -1,6 +1,6 @@
 {
   "name": "physom",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A simple physics engine for `canvasom`.",
   "module": "./dist/physom.min.js",
   "main": "./dist/physom.umd.min.js",
