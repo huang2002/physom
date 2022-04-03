@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+- Modify tick mechanisms
+
 ## 0.2.2
 
 - Fix frame time recording
