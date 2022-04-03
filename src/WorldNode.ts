@@ -423,7 +423,7 @@ export class WorldNode<Events extends WorldNodeEvents = WorldNodeEvents>
                 this.maxFrameCount,
                 Math.floor(deltaTime / frameDuration),
             );
-            this._savedTime = deltaTime - frameCount * frameDuration;
+            this._savedTime = deltaTime % frameDuration;
         }
         this._lastUpdateTime = timeStamp;
 
