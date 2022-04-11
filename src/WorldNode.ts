@@ -41,7 +41,7 @@ export type WorldNodeOptions<Events extends WorldNodeEvents> = (
          */
         maxFrameCount: number;
         /**
-         * Default value of `renderRoot`.
+         * Default value of `renderRoot` & `eventRoot`.
          * @default this.getRoot()
          */
         root: CanvasRoot<any> | null;
