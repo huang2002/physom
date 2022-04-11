@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Fix jsdoc of `WorldNodeOptions.root`
+
 ## 0.3.0
 
 - Modify tick mechanisms
