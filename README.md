@@ -4,6 +4,6 @@
 
 ## Links
 
-- [Documentation](https://github.com/huang2002/canvasom/wiki)
+- [Documentation](https://github.com/huang2002/physom/wiki)
 - [Changelog](./CHANGELOG)
 - [License (MIT)](./LICENSE)
